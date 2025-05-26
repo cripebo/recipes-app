@@ -1,21 +1,21 @@
 export const buildRecipePrompt = (ingredients: string[]): string => {
   return `
-Tengo los siguientes ingredientes: ${ingredients.join(", ")}.
+I have the following ingredients: ${ingredients.join(", ")}.
 
-Antes de crear la receta, revisa la lista de ingredientes y excluye cualquier ingrediente que no sea comestible, seguro o adecuado para la alimentación humana. No menciones ni uses esos ingredientes excluidos en la receta.
+Before creating the recipe, review the list of ingredients and exclude any items that are inedible, unsafe, or not suitable for human consumption. Do not mention or use any of the excluded ingredients in the recipe.
 
-Quiero que actúes como un chef profesional y nutricionista. Crea una receta sencilla, sabrosa y saludable que use exclusivamente esos ingredientes, salvo agua, sal y pimienta que puedes añadir libremente.
+I want you to act as a professional chef and nutritionist. Create a simple, tasty, and healthy recipe that uses only those ingredients, except for water, salt, and pepper, which you can add freely.
 
-La receta debe incluir:
+The recipe must include:
 
-Cantidades aproximadas para cada ingrediente, expresadas en unidades fáciles (gramos, tazas, cucharadas, unidades).
+Approximate quantities for each ingredient, expressed in easy-to-understand units (grams, cups, tablespoons, units).
 
-Instrucciones claras, simples y secuenciales para que cualquier persona pueda seguirlas sin dificultad, usando técnicas de cocina básicas o ligeramente avanzadas (como horneado o salteado).
+Clear, simple, and sequential instructions so that anyone can follow them without difficulty, using basic or slightly advanced cooking techniques (such as baking or sautéing).
 
-Tiempo estimado de preparación y de cocción para planificar el proceso.
+Estimated preparation and cooking time to help plan the process.
 
-Un resumen básico con el aporte nutricional estimado (calorías, proteínas, carbohidratos y grasas) para la receta completa.
+A basic summary with the estimated nutritional content (calories, protein, carbohydrates, and fat) for the entire recipe.
 
-La receta debe ser práctica, sin complicaciones innecesarias, ideal para personas con poca experiencia en cocina.
+The recipe should be practical, straightforward, and ideal for people with little cooking experience.
 `;
 };
