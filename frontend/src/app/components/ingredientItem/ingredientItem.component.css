@@ -1,0 +1,8 @@
+:host {
+  display: block;
+}
+
+div:has(i-lucide:hover) {
+  background-color: var(--color-destructive);
+  border-color: var(--color-destructive);
+}
