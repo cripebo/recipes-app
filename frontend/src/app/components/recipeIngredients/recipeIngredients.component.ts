@@ -22,7 +22,7 @@ import { HlmCheckboxComponent } from '@spartan-ng/ui-checkbox-helm';
         <h3 hlmCardTitle>Ingredients</h3>
       </div>
       <div hlmCardContent>
-        <ul class="flex flex-col gap-1 px-6">
+        <ul class="flex flex-col gap-1">
           @for (ingredient of ingredients(); track $index) {
             <li class="text-gray-300 flex items-start gap-2 text-pretty">
               <hlm-checkbox class="mt-1" />

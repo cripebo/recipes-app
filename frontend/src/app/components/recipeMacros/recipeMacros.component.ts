@@ -30,7 +30,7 @@ type Macros = {
         <p hlmCardDescription>List of macronutrients for this recipe</p>
       </div>
       <div hlmCardContent>
-        <ul class="px-6 divide-y divide-gray-500">
+        <ul class="divide-y ">
           <li class="flex flex-row justify-between py-2">
             <span>Calories</span>
             <span>{{ macros().calories }} kcal</span>
