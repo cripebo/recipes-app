@@ -2,13 +2,22 @@ export const RecipeSchema = {
   type: "object",
   properties: {
     title: { type: "string" },
+    description: { type: "string" },
     ingredients: {
       type: "array",
       items: { type: "string" },
     },
     steps: {
       type: "array",
-      items: { type: "string" },
+      items: {
+        type: "object",
+        properties: {
+          title: { type: "string" },
+          description: { type: "string" },
+        },
+        required: ["title", "description"],
+        additionalProperties: false,
+      },
     },
     macros: {
       type: "object",
@@ -22,6 +31,6 @@ export const RecipeSchema = {
       additionalProperties: false,
     },
   },
-  required: ["title", "ingredients", "steps", "macros"],
+  required: ["title", "description", "ingredients", "steps", "macros"],
   additionalProperties: false,
 };
