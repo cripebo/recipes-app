@@ -1,10 +1,40 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RecipeService } from '../../services/recipe.service';
+import { RecipeMacrosComponent } from '../recipeMacros/recipeMacros.component';
+import { RecipeIngredientsComponent } from '../recipeIngredients/recipeIngredients.component';
+import { RecipeStepsComponent } from '../recipeSteps/recipeSteps.component';
 
 @Component({
   selector: 'app-recipe',
-  imports: [],
-  template: ` <div class="recipe-container"></div> `,
-  styleUrl: './recipe.component.css',
+  imports: [
+    RecipeMacrosComponent,
+    RecipeIngredientsComponent,
+    RecipeStepsComponent,
+  ],
+  templateUrl: './recipe.component.html',
+  animations: [
+    trigger('feedLoading', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', transform: 'translateY(-16px)' }),
+        animate(
+          '.3s ease-in',
+          style({ height: '*', opacity: '1', transform: 'translateY(0px)' }),
+        ),
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', transform: 'translateY(0px)' }),
+        animate(
+          '.2s ease-in',
+          style({ height: '0', opacity: '0', transform: 'translateY(-16px)' }),
+        ),
+      ]),
+    ]),
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RecipeComponent {}
+export class RecipeComponent {
+  recipeSrv = inject(RecipeService);
+
+  recipe = this.recipeSrv.recipe;
+}

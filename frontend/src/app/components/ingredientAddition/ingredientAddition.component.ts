@@ -45,17 +45,14 @@ export class IngredientAdditionComponent {
 
   inputIngredient = new FormControl<string>('', {
     nonNullable: true,
-    validators: [
-      Validators.required,
-      Validators.maxLength(this.INGREDIENT_MAX_LENGTH()),
-    ],
+    validators: [Validators.maxLength(this.INGREDIENT_MAX_LENGTH())],
   });
 
   add() {
     if (this.inputIngredient.invalid || !this.inputIngredient.value.trim())
       return;
 
-    this.ingredientSrv.addToList(this.inputIngredient.value);
+    this.ingredientSrv.addToList(this.inputIngredient.value.trim());
     this.inputIngredient.reset();
     this.inputIngredient.markAsUntouched();
   }
