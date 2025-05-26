@@ -1,0 +1,5 @@
+{
+  "exec": "node --env-file=.env -r ts-node/register ./src/app.ts",
+  "watch": ["src"],
+  "ext": "ts"
+}
