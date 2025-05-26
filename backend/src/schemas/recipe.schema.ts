@@ -14,8 +14,9 @@ export const RecipeSchema = {
         properties: {
           title: { type: "string" },
           description: { type: "string" },
+          durationMinutes: { type: "number" },
         },
-        required: ["title", "description"],
+        required: ["title", "description", "durationMinutes"],
         additionalProperties: false,
       },
     },

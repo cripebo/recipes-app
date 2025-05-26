@@ -9,11 +9,8 @@ I want you to act as a professional chef and nutritionist. Create a simple, tast
 The recipe must include:
 
 Approximate quantities for each ingredient, expressed in easy-to-understand units (grams, cups, tablespoons, units).
-
 Clear, simple, and sequential instructions so that anyone can follow them without difficulty, using basic or slightly advanced cooking techniques (such as baking or sautéing).
-
-Estimated preparation and cooking time to help plan the process.
-
+An estimated duration for each step, in minutes, to help with time planning.
 A basic summary with the estimated nutritional content (calories, protein, carbohydrates, and fat) for the entire recipe.
 
 The recipe should be practical, straightforward, and ideal for people with little cooking experience.
