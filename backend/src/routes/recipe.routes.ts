@@ -1,9 +1,10 @@
 import { Router } from "express";
 import RecipeController from "../controllers/recipe.controller";
 import { validateIngredients } from "../middlewares/recipe.middleware";
+import { rateLimiter } from "../middlewares/rateLimiter.middleware";
 
 const RecipeRoutes = Router();
-const RecipeMiddlewares = [validateIngredients];
+const RecipeMiddlewares = [rateLimiter, validateIngredients];
 
 // prettier-ignore
 RecipeRoutes
