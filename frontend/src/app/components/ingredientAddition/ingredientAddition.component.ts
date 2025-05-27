@@ -20,7 +20,7 @@ import { IngredientsService } from '../../services/ingredientsService.service';
         class="w-full "
         hlmInput
         type="text"
-        placeholder="Ingredient"
+        placeholder="What do you have?"
         [formControl]="inputIngredient"
         (keydown.enter)="add()"
         [maxLength]="INGREDIENT_MAX_LENGTH()"

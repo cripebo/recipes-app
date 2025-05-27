@@ -3,6 +3,7 @@ import { IngredientAdditionComponent } from './components/ingredientAddition/ing
 import { HeaderComponent } from './components/header/header.component';
 import { IngredientContainerComponent } from './components/ingredientContainer/ingredientContainer.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
+import { fadeInTop } from './animations/general.animations';
 
 @Component({
   selector: 'app-root',
@@ -14,5 +15,6 @@ import { RecipeComponent } from './components/recipe/recipe.component';
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  animations: [fadeInTop],
 })
 export class AppComponent {}

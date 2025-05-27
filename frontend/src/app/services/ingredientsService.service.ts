@@ -9,7 +9,7 @@ export class IngredientsService {
   readonly hasIngredients = computed(() => this._ingredientsList().length);
 
   addToList(ingredient: string) {
-    this._ingredientsList.update((list) => [ingredient, ...list]);
+    this._ingredientsList.update((list) => [...list, ingredient]);
   }
 
   deleteFromList(ingredient: string) {
