@@ -17,3 +17,6 @@
     </div>
   </div>
 }
+@if (recipeSrv.error()) {
+  <app-error-alert [errorDescription]="recipeSrv.error()!.error" />
+}

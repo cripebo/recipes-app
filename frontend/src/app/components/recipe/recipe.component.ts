@@ -4,6 +4,7 @@ import { RecipeService } from '../../services/recipe.service';
 import { RecipeMacrosComponent } from '../recipeMacros/recipeMacros.component';
 import { RecipeIngredientsComponent } from '../recipeIngredients/recipeIngredients.component';
 import { RecipeStepsComponent } from '../recipeSteps/recipeSteps.component';
+import { ErrorAlertComponent } from '../errorAlert/errorAlert.component';
 
 @Component({
   selector: 'app-recipe',
@@ -11,6 +12,7 @@ import { RecipeStepsComponent } from '../recipeSteps/recipeSteps.component';
     RecipeMacrosComponent,
     RecipeIngredientsComponent,
     RecipeStepsComponent,
+    ErrorAlertComponent,
   ],
   templateUrl: './recipe.component.html',
   animations: [

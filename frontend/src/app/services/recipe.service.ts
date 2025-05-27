@@ -14,9 +14,11 @@ export class RecipeService {
 
   private _recipe = signal<any | null>(null);
   private _loading = signal(false);
+  private _error = signal<{ error: string } | null>(null);
   readonly recipe = computed(() => this._recipe());
-  readonly hasRecipe = computed(() => this._recipe() !== null);
   readonly loading = computed(() => this._loading());
+  readonly error = computed(() => this._error());
+  readonly hasRecipe = computed(() => this._recipe() !== null);
 
   generateRecipe() {
     if (this.loading()) return;
@@ -26,12 +28,17 @@ export class RecipeService {
     if (!ingredients.length) return;
 
     this._recipe.set(null);
+    this._error.set(null);
     this._loading.set(true);
     this.http
       .post(`${this.apiUrl}/recipe/generate`, { ingredients })
       .pipe(
         catchError((err) => {
-          console.log(err);
+          if (err.status === 429) {
+            this._error.set(err.error);
+          } else {
+            this._error.set({ error: 'Ha ocurrido un error inesperado.' });
+          }
           return of(null);
         }),
         finalize(() => this._loading.set(false)),

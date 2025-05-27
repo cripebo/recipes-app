@@ -36,6 +36,12 @@
       ],
       "@spartan-ng/ui-spinner-helm": [
         ".\\libs/ui/ui-spinner-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-alert-helm": [
+        ".\\libs/ui/ui-alert-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-accordion-helm": [
+        ".\\libs/ui/ui-accordion-helm/src/index.ts"
       ]
     }
   },
