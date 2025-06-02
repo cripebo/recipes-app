@@ -37,7 +37,7 @@ export class RecipeService {
           if (err.status === 429) {
             this._error.set(err.error);
           } else {
-            this._error.set({ error: 'Ha ocurrido un error inesperado.' });
+            this._error.set({ error: 'An unexpected error has occurred.' });
           }
           return of(null);
         }),

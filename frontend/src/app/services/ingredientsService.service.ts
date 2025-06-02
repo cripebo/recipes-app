@@ -17,4 +17,8 @@ export class IngredientsService {
       return list.filter((el) => el !== ingredient);
     });
   }
+
+  deleteAllFromList() {
+    this._ingredientsList.set([]);
+  }
 }

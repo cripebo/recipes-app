@@ -1,5 +1,12 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 
+export const fadeIn = trigger('fadeIn', [
+  transition(':enter', [
+    style({ opacity: 0 }),
+    animate('.5s ease-in', style({ opacity: 1 })),
+  ]),
+]);
+
 export const fadeInLeft = trigger('fadeInLeft', [
   transition(':enter', [
     style({ opacity: 0, transform: 'translateX(-16px)' }),

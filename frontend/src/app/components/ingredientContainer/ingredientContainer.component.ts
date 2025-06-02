@@ -15,9 +15,9 @@ import { fadeInBottom } from '../../animations/general.animations';
   selector: 'app-ingredient-container',
   imports: [IngredientsListComponent, HlmButtonDirective, HlmSpinnerComponent],
   template: `
-    @if (ingredientsSrv.hasIngredients()) {
-      <div @fadeInBottom class="ingredients-container flex flex-col gap-4">
-        <div class="ingredients-action flex">
+    <div @fadeInBottom class="ingredients-container flex flex-col gap-4">
+      @if (ingredientsSrv.hasIngredients()) {
+        <div class="ingredients-action flex gap-2">
           <button
             hlmBtn
             class="px-3 cursor-pointer md:w-full max-w-[140px] flex gap-1"
@@ -29,12 +29,21 @@ import { fadeInBottom } from '../../animations/general.animations';
               <hlm-spinner size="xs" />
             }
           </button>
+          <button
+            hlmBtn
+            variant="outline"
+            class="px-3 cursor-pointer md:w-full max-w-[140px] flex gap-1"
+            [disabled]="recipeSrv.loading()"
+            (click)="ingredientsSrv.deleteAllFromList()"
+          >
+            Clear
+          </button>
         </div>
-        <div class="ingredients-list">
-          <app-ingredients-list />
-        </div>
+      }
+      <div class="ingredients-list">
+        <app-ingredients-list />
       </div>
-    }
+    </div>
   `,
   styleUrl: './ingredientContainer.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
