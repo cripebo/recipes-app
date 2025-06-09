@@ -1,0 +1,45 @@
+<hlm-tabs tab="account" class="w-full">
+  <hlm-tabs-list class="grid w-full grid-cols-2" aria-label="tabs example">
+    <button hlmTabsTrigger="account" class="cursor-pointer">
+      Favorite ({{ favoriteRecipesCount() }})
+    </button>
+    <button hlmTabsTrigger="password" class="cursor-pointer">
+      Generated ({{ recipesCount() }})
+    </button>
+  </hlm-tabs-list>
+  <div hlmTabsContent="account">
+    <section hlmCard>
+      <div hlmCardHeader>
+        <h3 hlmCardTitle>Favorite</h3>
+        <p hlmCardDescription>
+          View and manage your favorite recipes. These are the ones you've
+          marked with a star.
+        </p>
+      </div>
+      <p hlmCardContent>
+        <app-profile-recipes-list
+          [recipes]="favoriteRecipes()"
+          emptyMessage="You haven’t added any recipes to your favorites yet."
+        />
+      </p>
+    </section>
+  </div>
+  <div hlmTabsContent="password">
+    <section hlmCard>
+      <div hlmCardHeader>
+        <h3 hlmCardTitle>Generated</h3>
+        <p hlmCardDescription>
+          Explore all the recipes you've created. You can revisit, edit, or
+          delete them anytime.
+        </p>
+      </div>
+      <p hlmCardContent>
+        <app-profile-recipes-list
+          [recipes]="recipes()!"
+          emptyMessage='You haven’t generated any recipes yet.  
+          Click "Generate Recipe" to create your first delicious idea!'
+        />
+      </p>
+    </section>
+  </div>
+</hlm-tabs>

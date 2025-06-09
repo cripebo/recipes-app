@@ -1,0 +1,9 @@
+<main class="w-full max-w-5xl mx-auto flex flex-col gap-8 px-4 md:pt-16">
+  <div class="profile--actions flex justify-end">
+    <app-auth-actions />
+  </div>
+  <section class="profile--info flex flex-col md:flex-row gap-4">
+    <app-profile-info [profile]="profile()!" class="flex-1" />
+    <app-profile-recipes class="flex-2" />
+  </section>
+</main>
