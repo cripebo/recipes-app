@@ -3,6 +3,9 @@ import { IngredientsService } from './ingredientsService.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { catchError, finalize, of } from 'rxjs';
+import { FirestoreService } from './firestore.service';
+import { Recipe } from '@models/recipe.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +14,8 @@ export class RecipeService {
   private apiUrl = environment.BASE_API_UPL;
   private http = inject(HttpClient);
   private ingredientsSrv = inject(IngredientsService);
+  private firestoreSrv = inject(FirestoreService);
+  private isLoggedIn = inject(AuthService).isLoggedIn;
 
   private _recipe = signal<any | null>(null);
   private _loading = signal(false);
@@ -31,7 +36,7 @@ export class RecipeService {
     this._error.set(null);
     this._loading.set(true);
     this.http
-      .post(`${this.apiUrl}/recipe/generate`, { ingredients })
+      .post<Recipe>(`${this.apiUrl}/recipe/generate`, { ingredients })
       .pipe(
         catchError((err) => {
           if (err.status === 429) {
@@ -43,6 +48,12 @@ export class RecipeService {
         }),
         finalize(() => this._loading.set(false)),
       )
-      .subscribe((recipe) => this._recipe.set(recipe));
+      .subscribe((recipe) => {
+        if (this.isLoggedIn()) {
+          this.firestoreSrv.addRecipe(recipe!);
+        }
+
+        this._recipe.set(recipe);
+      });
   }
 }
