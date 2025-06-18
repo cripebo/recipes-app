@@ -16,15 +16,22 @@ export class OpenAIService implements RecipeProvider {
   }
 
   async generateRecipe(ingredients: string[]) {
-    const prompt = buildRecipePrompt(ingredients);
-    const recipe = await this.callOpenAI(prompt, RecipeSchema);
+    const { system, user } = buildRecipePrompt(ingredients);
+    const recipe = await this.callOpenAI(system, user, RecipeSchema);
     return recipe;
   }
 
-  private async callOpenAI(prompt: string, schema: any) {
+  private async callOpenAI(
+    systemPrompt: string,
+    userPrompt: string,
+    schema: any
+  ) {
     const res = await this.openai.responses.create({
       model: this.model,
-      input: [{ role: "user", content: prompt }],
+      input: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt },
+      ],
       text: {
         format: {
           type: "json_schema",
